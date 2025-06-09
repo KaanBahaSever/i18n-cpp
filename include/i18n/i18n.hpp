@@ -66,6 +66,32 @@ public:
         return result;
     }
 
+    // Static methods for global access
+    static I18n& getInstance() {
+        static I18n instance;
+        return instance;
+    }
+
+    static bool loadGlobalLocale(const std::string& locale) {
+        return getInstance().loadLocale(locale);
+    }
+
+    static std::string translateGlobal(const std::string& key) {
+        return getInstance().translate(key);
+    }
+
+    static std::string interpolateGlobal(const std::string& key, const std::unordered_map<std::string, std::string>& values) {
+        return getInstance().interpolate(key, values);
+    }
+
 private:
     std::unordered_map<std::string, std::string> translations;
 };
+
+// Convenient macros using static methods
+#define _(key) I18n::translateGlobal(key)
+#define _f(key, ...) I18n::interpolateGlobal(key, __VA_ARGS__)
+
+// Alternative macro names for clarity
+#define I18N_T(key) _(key)
+#define I18N_F(key, ...) _f(key, __VA_ARGS__)

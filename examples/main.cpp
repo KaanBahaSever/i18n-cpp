@@ -38,32 +38,32 @@ int main() {
     //set console output to UTF-8
     setupUTF8Console();
 
-    // Create an instance of the I18n class
-    I18n i18n;
-
-    // Load the English locale
-    if (!i18n.loadLocale("en")) {
+    // Load the English locale using static method
+    if (!I18n::loadGlobalLocale("en")) {
         std::cerr << "Failed to load English locale." << std::endl;
         return 1;
     }
 
-    // Retrieve a translated string
-    std::string greeting = i18n.translate("greeting");
-    std::cout << greeting << std::endl; // Output: Hello, World!
+    // Retrieve a translated string using macro
+    std::cout << _("greeting") << std::endl; // Output: Hello, World!
 
     // Load the Spanish locale
-    if (!i18n.loadLocale("es")) {
+    if (!I18n::loadGlobalLocale("es")) {
         std::cerr << "Failed to load Spanish locale." << std::endl;
         return 1;
     }
 
-    // Retrieve a translated string in Spanish
-    std::string greetingEs = i18n.translate("greeting");
-    std::cout << greetingEs << std::endl; // Output: ¡Hola, Mundo!
+    // Retrieve a translated string in Spanish using macro
+    std::cout << _("greeting") << std::endl; // Output: ¡Hola, Mundo!
 
-    // Dynamic string interpolation example
-    std::string personalizedGreeting = i18n.interpolate("personalized_greeting", { {"name", "Alice"} });
-    std::cout << personalizedGreeting << std::endl; // Output: Hello, Alice!
+    // Dynamic string interpolation example using macro
+    std::cout << _f("personalized_greeting", {{"name", "Alice"}}) << std::endl; // Output: Hello, Alice!
+
+    // Compare with traditional method calls (optional)
+    I18n localInstance;
+    localInstance.loadLocale("en");
+    std::string greeting = localInstance.translate("greeting");
+    std::cout << "Local instance: " << greeting << std::endl;
 
     return 0;
 }
