@@ -1,0 +1,31 @@
+# Build artifacts
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.dylib
+*.a
+*.lib
+
+# Build directories
+build/
+bin/
+obj/
+Debug/
+Release/
+x64/
+x86/
+
+# IDE files
+.vs/
+.vscode/
+*.vcxproj.user
+*.sln
+*.vcxproj
+*.vcxproj.filters
+
+# System files
+.DS_Store
+Thumbs.db
+
