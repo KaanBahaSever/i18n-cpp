@@ -39,31 +39,25 @@ int main() {
     setupUTF8Console();
 
     // Load the English locale using static method
-    if (!I18n::loadGlobalLocale("en")) {
+    if (!I18n::loadLocale("en")) {
         std::cerr << "Failed to load English locale." << std::endl;
         return 1;
     }
 
     // Retrieve a translated string using macro
-    std::cout << _("greeting") << std::endl; // Output: Hello, World!
+    std::cout << _t("greeting") << std::endl; // Output: Hello, World!
 
     // Load the Spanish locale
-    if (!I18n::loadGlobalLocale("es")) {
+    if (!I18n::loadLocale("es")) {
         std::cerr << "Failed to load Spanish locale." << std::endl;
         return 1;
     }
 
     // Retrieve a translated string in Spanish using macro
-    std::cout << _("greeting") << std::endl; // Output: ¡Hola, Mundo!
+    std::cout << _t("greeting") << std::endl; // Output: ¡Hola, Mundo!
 
     // Dynamic string interpolation example using macro
     std::cout << _f("personalized_greeting", {{"name", "Alice"}}) << std::endl; // Output: Hello, Alice!
-
-    // Compare with traditional method calls (optional)
-    I18n localInstance;
-    localInstance.loadLocale("en");
-    std::string greeting = localInstance.translate("greeting");
-    std::cout << "Local instance: " << greeting << std::endl;
 
     return 0;
 }
