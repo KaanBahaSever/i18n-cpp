@@ -1,4 +1,4 @@
-# C++ I18n Library
+# C++ i18n Library
 
 ## Overview
 This project is a simple header-only internationalization (i18n) library written in C++. It allows for easy localization of applications by loading language files stored in a local folder and supports dynamic string interpolation.
