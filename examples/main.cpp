@@ -62,9 +62,7 @@ int main() {
     std::cout << greetingEs << std::endl; // Output: ¡Hola, Mundo!
 
     // Dynamic string interpolation example
-    std::string name = "Alice";
-    std::unordered_map<std::string, std::string> params = { {"name", name} };
-    std::string personalizedGreeting = i18n.interpolate("personalized_greeting", params);
+    std::string personalizedGreeting = i18n.interpolate("personalized_greeting", { {"name", "Alice"} });
     std::cout << personalizedGreeting << std::endl; // Output: Hello, Alice!
 
     return 0;
