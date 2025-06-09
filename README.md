@@ -3,6 +3,15 @@
 ## Overview
 This project is a simple header-only internationalization (i18n) library written in C++. It allows for easy localization of applications by loading language files stored in a local folder and supports dynamic string interpolation.
 
+**Key Features:**
+- **Header-only**: Just include and use - no compilation required
+- **Lightweight**: Designed for simple applications where minimal overhead is important
+- **Easy integration**: Perfect for small to medium-sized projects
+- **File-based localization**: Uses simple .properties files for translations
+- **Dynamic interpolation**: Supports runtime string parameter substitution
+
+**Note**: This library is optimized for simple applications. If your project has very large file sizes or complex internationalization needs, you might want to consider more robust solutions like ICU or gettext.
+
 ## Project Structure
 ```
 cpp-i18n-lib
