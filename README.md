@@ -40,8 +40,8 @@ The localization files are stored in the `locales` directory, with subdirectorie
 greeting=Hello, World!
 farewell=Goodbye!
 personalized_greeting=Welcome to our application {name}.
-balance_message=Your balance is {0} dollars.
-error_message=Error: {0} occurred while processing your request.
+balance_message=Your balance is {value} dollars.
+error_message=Error: {code} occurred while processing your request.
 ```
 
 ### Example of `locales/es/messages.properties`
@@ -49,8 +49,8 @@ error_message=Error: {0} occurred while processing your request.
 greeting=¡Hola, Mundo!
 farewell=¡Adiós!
 personalized_greeting=Bienvenido a nuestra aplicación {name}.
-balance_message=Su saldo es de {0} dólares.
-error_message=Error: {0} ocurrió mientras procesaba su solicitud.
+balance_message=Su saldo es de {value} dólares.
+error_message=Error: {code} ocurrió mientras procesaba su solicitud.
 ```
 
 ### Example of `locales/fr/messages.properties`
@@ -58,8 +58,8 @@ error_message=Error: {0} ocurrió mientras procesaba su solicitud.
 greeting=Bonjour le monde!
 farewell=Au revoir!
 personalized_greeting=Bienvenue dans notre application {name}.
-balance_message=Votre solde est de {0} dollars.
-error_message=Erreur: {0} s'est produite lors du traitement de votre demande.
+balance_message=Votre solde est de {value} dollars.
+error_message=Erreur: {code} s'est produite lors du traitement de votre demande.
 ```
 
 ## Building the Library
@@ -142,16 +142,16 @@ std::cout << _f("personalized_greeting", {{"name", "John"}}) << std::endl;
 std::cout << I18n::interpolate("personalized_greeting", {{"name", "Alice"}}) << std::endl;
 ```
 
-### Numbered Placeholders
-Use `{0}`, `{1}`, etc. for numbered placeholders:
+### Additional Named Placeholder Examples
+Use descriptive names for better code readability:
 
 ```cpp
-// For messages like "Your balance is {0} dollars."
-std::cout << _f("balance_message", {{"0", "150.50"}}) << std::endl;
+// For messages like "Your balance is {value} dollars."
+std::cout << _f("balance_message", {{"value", "150.50"}}) << std::endl;
 // Outputs: Your balance is 150.50 dollars.
 
-// For error messages like "Error: {0} occurred while processing your request."
-std::cout << _f("error_message", {{"0", "Network timeout"}}) << std::endl;
+// For error messages like "Error: {code} occurred while processing your request."
+std::cout << _f("error_message", {{"code", "Network timeout"}}) << std::endl;
 // Outputs: Error: Network timeout occurred while processing your request.
 ```
 
